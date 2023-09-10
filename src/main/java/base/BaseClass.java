@@ -33,7 +33,7 @@ public class BaseClass {
     }
 
     @BeforeSuite
-    public void beforeSuite() throws Exception {
+    public void start_appium_server() {
         ThreadContext.put("ROUTINGKEY", "ServerLogs");
         server = AppiumDriverLocalService.buildDefaultService();
 
@@ -132,7 +132,7 @@ public class BaseClass {
     }
 
     @AfterSuite(alwaysRun = true)
-    public void close_appium_server() {
+    public void stop_appium_server() {
         if(server.isRunning()){
             server.stop();
             logger.info("Appium server stopped");
