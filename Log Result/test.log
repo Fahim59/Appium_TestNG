@@ -1,0 +1,3 @@
+2023-09-10 17:11:56.433 [main] INFO  base.BaseClass - Appium server started
+2023-09-10 17:13:21.527 [main] INFO  base.BaseClass - initialize_driver
+2023-09-10 17:13:23.882 [main] INFO  base.BaseClass - Appium server stopped
