@@ -1,13 +1,13 @@
 package base;
 
+import factory.DriverFactory;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import org.apache.logging.log4j.ThreadContext;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -25,7 +25,7 @@ public class BaseClass {
         ThreadContext.put("ROUTINGKEY", "ServerLogs");
         server = AppiumDriverLocalService.buildDefaultService();
 
-        if(!checkIfAppiumServerIsRunnning(4723)) {
+        if(!checkIfAppiumServerIsRunning(4723)) {
             server.start();
             server.clearOutPutStreams();
 
@@ -36,7 +36,7 @@ public class BaseClass {
         }
     }
 
-    public boolean checkIfAppiumServerIsRunnning(int port) {
+    public boolean checkIfAppiumServerIsRunning(int port) {
         boolean isAppiumServerRunning = false;
         ServerSocket socket;
         try {
@@ -47,6 +47,17 @@ public class BaseClass {
             isAppiumServerRunning = true;
         }
         return isAppiumServerRunning;
+    }
+
+    @BeforeTest()
+    public void initialize_driver() throws Exception {
+        driver = DriverFactory.initializeDriver();
+
+        //logger.info("initialize_driver");
+    }
+
+    public AndroidDriver getDriver(){
+        return driver;
     }
 
     @AfterSuite(alwaysRun = true)
