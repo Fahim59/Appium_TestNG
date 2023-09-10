@@ -136,7 +136,7 @@ public class BaseClass {
     }
 
     @AfterSuite(alwaysRun = true)
-    public void afterSuite() {
+    public void close_appium_server() {
         if(server.isRunning()){
             server.stop();
             logger.info("Appium server stopped");
