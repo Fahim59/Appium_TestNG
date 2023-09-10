@@ -4,11 +4,11 @@
 <!--<listeners>-->
 <!--    <listener class-name="utils.Listeners"/>-->
 <!--</listeners>-->
-    <test verbose="2" preserve-order="true" name="test">
+    <test verbose="2" preserve-order="true" name="Emulator">
         <classes>
-            <class name="">
+            <class name="tests.LoginTest">
                 <methods>
-                    <include name=""/>
+                    <include name="login_with_valid_credentials"/>
                 </methods>
             </class>
         </classes>
