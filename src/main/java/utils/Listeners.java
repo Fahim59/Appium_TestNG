@@ -59,37 +59,35 @@ public class Listeners implements ITestListener {
             e.printStackTrace();
         }
 
-//        Extent_Report.getTest().fail("Test Failed",
-//                MediaEntityBuilder.createScreenCaptureFromBase64String(new String(encoded, StandardCharsets.US_ASCII)).build());
+        Extent_Report.getTest().fail("Test Failed",
+                MediaEntityBuilder.createScreenCaptureFromBase64String(new String(encoded, StandardCharsets.US_ASCII)).build());
     }
 
     @Override
-    public void onTestStart(ITestResult iTestResult) {
-
+    public void onTestStart(ITestResult result) {
+        Extent_Report.startTest(result.getName(), result.getMethod().getDescription())
+                .assignCategory(new ConfigLoader().initializeProperty().getProperty("Platform") + "_" + new ConfigLoader().initializeProperty().getProperty("Device"))
+                .assignAuthor("Mustafizur Rahman");
     }
 
     @Override
     public void onTestSuccess(ITestResult iTestResult) {
-
+        Extent_Report.getTest().log(Status.PASS, "Test Passed");
     }
 
     @Override
     public void onTestSkipped(ITestResult iTestResult) {
-
+        Extent_Report.getTest().log(Status.SKIP, "Test Skipped");
     }
 
     @Override
-    public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) {
-
-    }
+    public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) { }
 
     @Override
-    public void onStart(ITestContext iTestContext) {
-
-    }
+    public void onStart(ITestContext iTestContext) { }
 
     @Override
     public void onFinish(ITestContext iTestContext) {
-
+        Extent_Report.getReporter().flush();
     }
 }
