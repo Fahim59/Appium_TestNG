@@ -8,6 +8,8 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.FileUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -28,6 +30,8 @@ public class BaseClass {
     protected static AndroidDriver<AndroidElement> driver;
     private static AppiumDriverLocalService server;
 
+    private static final Logger logger = LogManager.getLogger(BaseClass.class);
+
     public BaseClass(){
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
@@ -41,10 +45,10 @@ public class BaseClass {
             server.start();
             server.clearOutPutStreams();
 
-            //logger.info("Appium server started");
+            logger.info("Appium server started");
         }
         else {
-            //logger.info("Appium server already running");
+            logger.info("Appium server already running");
         }
     }
 
@@ -65,7 +69,7 @@ public class BaseClass {
     public void initialize_driver() throws Exception {
         driver = DriverFactory.initializeDriver();
 
-        //logger.info("initialize_driver");
+        logger.info("initialize_driver");
     }
 
     public AndroidDriver getDriver(){
@@ -135,7 +139,7 @@ public class BaseClass {
     public void afterSuite() {
         if(server.isRunning()){
             server.stop();
-            //logger.info("Appium server stopped");
+            logger.info("Appium server stopped");
         }
     }
 }
