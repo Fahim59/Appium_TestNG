@@ -6,7 +6,7 @@
 <!--</listeners>-->
     <test verbose="2" preserve-order="true" name="Emulator">
         <classes>
-            <class name="tests.LoginTest">
+            <class name="tests.HomeTest">
                 <methods>
                     <include name="login_with_valid_credentials"/>
                 </methods>
