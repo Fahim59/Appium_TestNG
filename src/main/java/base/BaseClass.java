@@ -2,14 +2,20 @@ package base;
 
 import factory.DriverFactory;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
+import io.appium.java_client.touch.LongPressOptions;
+import io.appium.java_client.touch.TapOptions;
+import io.appium.java_client.touch.offset.ElementOption;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -20,7 +26,10 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.util.Date;
+
+import static io.appium.java_client.touch.offset.ElementOption.element;
 
 public class BaseClass {
     protected static AndroidDriver<AndroidElement> driver;
@@ -112,6 +121,61 @@ public class BaseClass {
 
     public static void Scroll_Down_Text_FindElement(String text) {
         driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\""+text+"\"));");
+    }
+
+    public static void FindElementByUIAutomator_Click(String attribute, String value){driver.findElementByAndroidUIAutomator(""+attribute+"(\""+value+"\")").click();}
+
+    public static void TapElementByXpath(String xpath){
+        TouchAction tap = new TouchAction<>(driver);
+
+        WebElement element = driver.findElement(By.xpath(xpath));
+        tap.tap(new TapOptions().withElement(ElementOption.element(element))).perform();
+    }
+
+    public static void TapElementById(String id){
+        TouchAction tap = new TouchAction<>(driver);
+
+        WebElement element = driver.findElement(By.id(id));
+        tap.tap(new TapOptions().withElement(ElementOption.element(element))).perform();
+    }
+
+    public static void LongPressElementByXpath(String xpath){
+        TouchAction tap = new TouchAction<>(driver);
+
+        WebElement peopleName = driver.findElement(By.xpath(xpath));
+        tap.longPress(LongPressOptions.longPressOptions().withElement(ElementOption
+                .element(peopleName)).withDuration(Duration.ofSeconds(3))).release().perform();
+    }
+
+    public static void SwipeElementByXpath(String fromXpath, String toXpath){
+        TouchAction tap = new TouchAction<>(driver);
+
+        WebElement from = driver.findElement(By.xpath(fromXpath));
+        WebElement to = driver.findElement(By.xpath(toXpath));
+
+        tap.longPress(LongPressOptions.longPressOptions().withElement(ElementOption
+                        .element(from)).withDuration(Duration.ofSeconds(1))).moveTo(ElementOption.element(to))
+                .release().perform();
+    }
+
+    public static void Drag_DropElementByXpath(String fromXpath, String toXpath){
+        TouchAction tap = new TouchAction<>(driver);
+
+        WebElement from = driver.findElement(By.xpath(fromXpath));
+        WebElement to = driver.findElement(By.xpath(toXpath));
+
+        tap.longPress(element(from)).moveTo(element(to)).release().perform();
+    }
+
+    public static void Select_Scroll_Down(String id, String text, String attribute) {
+        TouchAction tap = new TouchAction<>(driver);
+
+        WebElement element = driver.findElement(By.id(id));
+        tap.tap(new TapOptions().withElement(ElementOption.element(element))).perform();
+
+        driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\""+text+"\"));");
+
+        driver.findElementByAndroidUIAutomator(""+attribute+"(\""+text+"\")").click();
     }
 
     @AfterTest()

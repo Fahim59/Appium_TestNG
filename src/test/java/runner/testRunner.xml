@@ -6,9 +6,9 @@
 </listeners>
     <test verbose="2" preserve-order="true" name="test">
         <classes>
-            <class name="tests.HomeTest">
+            <class name="tests.TestCases">
                 <methods>
-                    <include name="home_test"/>
+                    <include name="test_case_1"/>
                 </methods>
             </class>
         </classes>

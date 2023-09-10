@@ -1,2 +1,17 @@
 2023-09-10 17:11:56.433 [main] INFO  base.BaseClass - Appium server started
 2023-09-10 17:13:21.527 [main] INFO  base.BaseClass - initialize_driver
+2023-09-10 17:13:23.882 [main] INFO  base.BaseClass - Appium server stopped
+2023-09-10 18:05:39.227 [main] INFO  base.BaseClass - Appium server started
+2023-09-10 18:05:57.340 [main] INFO  base.BaseClass - initialize_driver
+2023-09-10 18:05:58.881 [main] INFO  base.BaseClass - Appium server stopped
+2023-09-10 18:27:03.662 [main] INFO  base.BaseClass - Appium server started
+2023-09-10 18:27:17.702 [main] INFO  base.BaseClass - initialize_driver
+2023-09-10 18:27:24.397 [main] INFO  base.BaseClass - Appium server stopped
+2023-09-10 18:27:55.832 [main] INFO  base.BaseClass - Appium server started
+2023-09-10 18:28:08.642 [main] INFO  base.BaseClass - initialize_driver
+2023-09-10 18:28:15.255 [main] INFO  base.BaseClass - Appium server stopped
+2023-09-10 18:28:55.459 [main] INFO  base.BaseClass - Appium server started
+2023-09-10 18:29:06.311 [main] INFO  base.BaseClass - initialize_driver
+2023-09-10 18:29:12.893 [main] INFO  base.BaseClass - Appium server stopped
+2023-09-10 18:41:29.536 [main] INFO  base.BaseClass - Appium server started
+2023-09-10 18:41:43.214 [main] INFO  base.BaseClass - initialize_driver
