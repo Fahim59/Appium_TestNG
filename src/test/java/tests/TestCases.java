@@ -21,7 +21,7 @@ public class TestCases extends BaseClass {
         viewPage = new ViewPage();
     }
 
-    @Test
+    @Test(description = "Basic click and send keys")
     public void test_case_1() {
         homePage.clickPreferenceMenu();
 
@@ -34,7 +34,7 @@ public class TestCases extends BaseClass {
         logger.info("Test case 1");
     }
 
-    @Test
+    @Test(description = "Click using UIAutomator")
     public void test_case_2() {
         homePage.clickViewMenu();
 
@@ -46,7 +46,7 @@ public class TestCases extends BaseClass {
         logger.info("Test case 2");
     }
 
-    @Test
+    @Test(description = "Tap and Long press")
     public void test_case_3() {
         homePage.clickViewMenu();
 
@@ -61,7 +61,7 @@ public class TestCases extends BaseClass {
         logger.info("Test case 3");
     }
 
-    @Test
+    @Test(description = "Swipe")
     public void test_case_4() {
         homePage.clickViewMenu();
 
@@ -79,7 +79,7 @@ public class TestCases extends BaseClass {
         }
     }
 
-    @Test
+    @Test(description = "Drag and Drop")
     public void test_case_5() {
         homePage.clickViewMenu();
 
