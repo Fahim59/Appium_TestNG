@@ -6,6 +6,7 @@ import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.touch.LongPressOptions;
 import io.appium.java_client.touch.TapOptions;
@@ -16,14 +17,17 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
+import utils.ConfigLoader;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.ServerSocket;
+import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -70,11 +74,45 @@ public class BaseClass {
         return isAppiumServerRunning;
     }
 
+//    @BeforeTest()
+//    public void initialize_driver() throws Exception {
+//        driver = DriverFactory.initializeDriver();
+//
+//        logger.info("initialize_driver");
+//    }
+
     @BeforeTest()
     public void initialize_driver() throws Exception {
-        driver = DriverFactory.initializeDriver();
+        DesiredCapabilities caps = new DesiredCapabilities();
+        File folder;
 
-        logger.info("initialize_driver");
+        String emulator = "true";
+
+        caps.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
+        caps.setCapability(MobileCapabilityType.DEVICE_NAME, "Nexus_5");
+
+        caps.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2");
+
+        if(emulator.equalsIgnoreCase("true")){
+            caps.setCapability(MobileCapabilityType.UDID, "emulator-5554");
+
+            caps.setCapability("avd", "Emulator");
+            caps.setCapability("avdLaunchTimeout", 180000);
+        }
+        else{
+            caps.setCapability(MobileCapabilityType.UDID, "177cc4e3");
+        }
+
+//        folder = new File("src/test/resources", "ApiDemos-debug.apk");
+//        caps.setCapability(MobileCapabilityType.APP, folder.getAbsolutePath());
+
+        caps.setCapability("appPackage","io.appium.android.apis");
+        caps.setCapability("appActivity","io.appium.android.apis.ApiDemos");
+
+//        caps.setCapability("unlockType","pin");
+//        caps.setCapability("unlockKey","0000");
+
+        driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), caps);
     }
 
     public AndroidDriver getDriver(){
@@ -166,7 +204,7 @@ public class BaseClass {
     @AfterTest()
     public void quit_driver() {
         try {
-            //driver.quit();
+            driver.quit();
             //Runtime.getRuntime().exec("adb emu kill");
 
             File logFile = new File("Log Result/test.log");

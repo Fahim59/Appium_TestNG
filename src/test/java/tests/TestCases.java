@@ -1,11 +1,17 @@
 package tests;
 
 import base.BaseClass;
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import pages.*;
+
+import java.time.Duration;
 
 public class TestCases extends BaseClass {
     private static final Logger logger = LogManager.getLogger(TestCases.class);
@@ -87,5 +93,27 @@ public class TestCases extends BaseClass {
         viewPage.dragAndDrop();
 
         logger.info("Test case 5");
+    }
+
+    @Test(description = "Interact with apps")
+    public void test_case_6() throws InterruptedException {
+        //homePage.clickViewMenu();
+
+//        small_wait(5000);
+//        driver.runAppInBackground(Duration.ofMillis(5000));
+
+//        System.out.println(driver.isAppInstalled("io.appium.android.apis"));
+
+//        driver.terminateApp("io.appium.android.apis");
+
+//        driver.lockDevice();
+//        System.out.println(driver.isDeviceLocked());
+//        small_wait(2000);
+
+//        driver.unlockDevice();
+//        System.out.println(driver.isDeviceLocked());
+
+        driver.pressKey(new KeyEvent().withKey(AndroidKey.HOME));
+        driver.pressKey(new KeyEvent().withKey(AndroidKey.CALCULATOR));
     }
 }
