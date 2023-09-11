@@ -3,6 +3,7 @@ package tests;
 import base.BaseClass;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.testng.Assert;
 import org.testng.annotations.*;
 import pages.*;
 
@@ -43,5 +44,20 @@ public class TestCases extends BaseClass {
         viewPage.clickLyonMenu();
 
         logger.info("Test case 2");
+    }
+
+    @Test
+    public void test_case_3() {
+        homePage.clickViewMenu();
+
+        viewPage.tapExpandListMenu();
+        viewPage.tapCustomAdapter();
+
+        viewPage.longPressPeoplesName();
+        viewPage.isDisplayedMenu();
+
+        Assert.assertTrue(viewPage.isDisplayedMenu());
+
+        logger.info("Test case 3");
     }
 }

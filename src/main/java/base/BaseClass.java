@@ -119,30 +119,21 @@ public class BaseClass {
         return element.getAttribute("text");
     }
 
+    public void tap_Element(MobileElement element) {
+        TouchAction tap = new TouchAction<>(driver);
+        wait_for_visibility(element);
+        tap.tap(new TapOptions().withElement(ElementOption.element(element))).perform();
+    }
+
+    public void longPress_Element(MobileElement element) {
+        TouchAction tap = new TouchAction<>(driver);
+        wait_for_visibility(element);
+        tap.longPress(LongPressOptions.longPressOptions().withElement(ElementOption
+                .element(element)).withDuration(Duration.ofSeconds(3))).release().perform();
+    }
+
     public static void Scroll_Down_Text_FindElement(String text) {
         driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\""+text+"\"));");
-    }
-    
-    public static void TapElementByXpath(String xpath){
-        TouchAction tap = new TouchAction<>(driver);
-
-        WebElement element = driver.findElement(By.xpath(xpath));
-        tap.tap(new TapOptions().withElement(ElementOption.element(element))).perform();
-    }
-
-    public static void TapElementById(String id){
-        TouchAction tap = new TouchAction<>(driver);
-
-        WebElement element = driver.findElement(By.id(id));
-        tap.tap(new TapOptions().withElement(ElementOption.element(element))).perform();
-    }
-
-    public static void LongPressElementByXpath(String xpath){
-        TouchAction tap = new TouchAction<>(driver);
-
-        WebElement peopleName = driver.findElement(By.xpath(xpath));
-        tap.longPress(LongPressOptions.longPressOptions().withElement(ElementOption
-                .element(peopleName)).withDuration(Duration.ofSeconds(3))).release().perform();
     }
 
     public static void SwipeElementByXpath(String fromXpath, String toXpath){

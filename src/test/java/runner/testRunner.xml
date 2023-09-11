@@ -9,7 +9,8 @@
             <class name="tests.TestCases">
                 <methods>
                     <exclude name="test_case_1"/>
-                    <include name="test_case_2"/>
+                    <exclude name="test_case_2"/>
+                    <include name="test_case_3"/>
                 </methods>
             </class>
         </classes>
