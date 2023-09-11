@@ -132,19 +132,17 @@ public class BaseClass {
                 .element(element)).withDuration(Duration.ofSeconds(3))).release().perform();
     }
 
-    public static void Scroll_Down_Text_FindElement(String text) {
-        driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\""+text+"\"));");
-    }
-
-    public static void SwipeElementByXpath(String fromXpath, String toXpath){
+    public void swipe_Element(MobileElement elementFrom, MobileElement elementTo) {
         TouchAction tap = new TouchAction<>(driver);
-
-        WebElement from = driver.findElement(By.xpath(fromXpath));
-        WebElement to = driver.findElement(By.xpath(toXpath));
+        wait_for_visibility(elementFrom);wait_for_visibility(elementTo);
 
         tap.longPress(LongPressOptions.longPressOptions().withElement(ElementOption
-                        .element(from)).withDuration(Duration.ofSeconds(1))).moveTo(ElementOption.element(to))
-                .release().perform();
+                        .element(elementFrom)).withDuration(Duration.ofSeconds(1)))
+                .moveTo(ElementOption.element(elementTo)).release().perform();
+    }
+
+    public static void Scroll_Down_Text_FindElement(String text) {
+        driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\""+text+"\"));");
     }
 
     public static void Drag_DropElementByXpath(String fromXpath, String toXpath){

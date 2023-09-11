@@ -17,6 +17,12 @@ public class ViewPage extends BaseClass {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text = 'People Names']") private MobileElement peoplesName;
     @AndroidFindBy(xpath = "//android.widget.TextView[@text = 'Sample menu']") private MobileElement sampleMenu;
 
+    @AndroidFindBy(uiAutomator = "text(\"Date Widgets\")") private MobileElement dateWidgetsMenu;
+    @AndroidFindBy(uiAutomator = "text(\"2. Inline\")") private MobileElement inline;
+    @AndroidFindBy(xpath = "//*[@content-desc='9']") private MobileElement nineBtn;
+    @AndroidFindBy(xpath = "//*[@content-desc='15']") private MobileElement fifteenBtn;
+    @AndroidFindBy(xpath = "//*[@content-desc='45']") private MobileElement fortyFiveBtn;
+
     public ViewPage clickAnimationMenu() {
         click_Element(animationMenu);
         return this;
@@ -49,5 +55,25 @@ public class ViewPage extends BaseClass {
 
     public boolean isDisplayedMenu() {
         return sampleMenu.isDisplayed();
+    }
+
+    public ViewPage tapDateWidgetsMenu() {
+        tap_Element(dateWidgetsMenu);
+        return this;
+    }
+
+    public ViewPage tapInline() {
+        tap_Element(inline);
+        return this;
+    }
+
+    public ViewPage tapNineBtn() {
+        tap_Element(nineBtn);
+        return this;
+    }
+
+    public ViewPage swipeBtn() {
+        swipe_Element(fifteenBtn,fortyFiveBtn);
+        return this;
     }
 }

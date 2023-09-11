@@ -60,4 +60,17 @@ public class TestCases extends BaseClass {
 
         logger.info("Test case 3");
     }
+
+    @Test
+    public void test_case_4() {
+        homePage.clickViewMenu();
+
+        viewPage.tapDateWidgetsMenu();
+        viewPage.tapInline();
+        viewPage.tapNineBtn();
+
+        viewPage.swipeBtn();
+
+        logger.info("Test case 4");
+    }
 }

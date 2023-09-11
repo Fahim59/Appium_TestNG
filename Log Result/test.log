@@ -44,3 +44,7 @@
 2023-09-11 13:35:42.323 [main] INFO  base.BaseClass - initialize_driver
 2023-09-11 13:35:54.528 [main] INFO  tests.TestCases - Test case 3
 2023-09-11 13:35:55.313 [main] INFO  base.BaseClass - Appium server stopped
+2023-09-11 13:53:03.740 [main] INFO  base.BaseClass - Appium server started
+2023-09-11 13:53:22.442 [main] INFO  base.BaseClass - initialize_driver
+2023-09-11 13:53:37.890 [main] INFO  tests.TestCases - Test case 4
+2023-09-11 13:53:39.057 [main] INFO  base.BaseClass - Appium server stopped
