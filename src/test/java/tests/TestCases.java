@@ -71,6 +71,11 @@ public class TestCases extends BaseClass {
 
         viewPage.swipeBtn();
 
-        logger.info("Test case 4");
+        if(viewPage.isAmActive().equalsIgnoreCase("true")){
+            logger.info("Time is- " +viewPage.getHourText() + ":" +viewPage.getMinuteText() +" AM");
+        }
+        else if(viewPage.isPmActive().equalsIgnoreCase("true")){
+            logger.info("Time is- " +viewPage.getHourText() + ":" +viewPage.getMinuteText() +" PM");
+        }
     }
 }

@@ -23,6 +23,11 @@ public class ViewPage extends BaseClass {
     @AndroidFindBy(xpath = "//*[@content-desc='15']") private MobileElement fifteenBtn;
     @AndroidFindBy(xpath = "//*[@content-desc='45']") private MobileElement fortyFiveBtn;
 
+    @AndroidFindBy(id = "android:id/hours") private MobileElement hourTxt;
+    @AndroidFindBy(id = "android:id/minutes") private MobileElement minuteTxt;
+    @AndroidFindBy(id = "android:id/am_label") private MobileElement amLevel;
+    @AndroidFindBy(id = "android:id/pm_label") private MobileElement pmLevel;
+
     public ViewPage clickAnimationMenu() {
         click_Element(animationMenu);
         return this;
@@ -75,5 +80,21 @@ public class ViewPage extends BaseClass {
     public ViewPage swipeBtn() {
         swipe_Element(fifteenBtn,fortyFiveBtn);
         return this;
+    }
+
+    public String getHourText(){
+        return getText(hourTxt);
+    }
+
+    public String getMinuteText(){
+        return getText(minuteTxt);
+    }
+
+    public String isAmActive() {
+        return amLevel.getAttribute("checked");
+    }
+
+    public String isPmActive() {
+        return pmLevel.getAttribute("checked");
     }
 }
