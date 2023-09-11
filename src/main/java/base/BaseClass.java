@@ -122,9 +122,7 @@ public class BaseClass {
     public static void Scroll_Down_Text_FindElement(String text) {
         driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\""+text+"\"));");
     }
-
-    public static void FindElementByUIAutomator_Click(String attribute, String value){driver.findElementByAndroidUIAutomator(""+attribute+"(\""+value+"\")").click();}
-
+    
     public static void TapElementByXpath(String xpath){
         TouchAction tap = new TouchAction<>(driver);
 
