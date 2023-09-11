@@ -11,11 +11,13 @@ public class TestCases extends BaseClass {
 
     private HomePage homePage;
     private PreferencePage preferencePage;
+    private ViewPage viewPage;
 
     @BeforeMethod
     public void beforeMethod() {
         homePage = new HomePage();
         preferencePage = new PreferencePage();
+        viewPage = new ViewPage();
     }
 
     @Test
@@ -33,6 +35,13 @@ public class TestCases extends BaseClass {
 
     @Test
     public void test_case_2() {
+        homePage.clickViewMenu();
 
+        viewPage.clickAnimationMenu();
+        viewPage.clickThreeDTransitionMenu();
+
+        viewPage.clickLyonMenu();
+
+        logger.info("Test case 2");
     }
 }

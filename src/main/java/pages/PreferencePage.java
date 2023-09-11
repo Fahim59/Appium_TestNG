@@ -5,7 +5,6 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 
 public class PreferencePage extends BaseClass {
-
     @AndroidFindBy(xpath = "//android.widget.TextView[@text = '3. Preference dependencies']") private MobileElement preferenceDependencies;
 
     @AndroidFindBy(id = "android:id/checkbox") private MobileElement wifiCheckbox;
