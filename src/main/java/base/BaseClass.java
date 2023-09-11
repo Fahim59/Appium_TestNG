@@ -141,17 +141,15 @@ public class BaseClass {
                 .moveTo(ElementOption.element(elementTo)).release().perform();
     }
 
-    public static void Scroll_Down_Text_FindElement(String text) {
-        driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\""+text+"\"));");
+    public void drag_drop_Element(MobileElement elementFrom, MobileElement elementTo) {
+        TouchAction tap = new TouchAction<>(driver);
+        wait_for_visibility(elementFrom);wait_for_visibility(elementTo);
+
+        tap.longPress(element(elementFrom)).moveTo(element(elementTo)).release().perform();
     }
 
-    public static void Drag_DropElementByXpath(String fromXpath, String toXpath){
-        TouchAction tap = new TouchAction<>(driver);
-
-        WebElement from = driver.findElement(By.xpath(fromXpath));
-        WebElement to = driver.findElement(By.xpath(toXpath));
-
-        tap.longPress(element(from)).moveTo(element(to)).release().perform();
+    public static void Scroll_Down_Text_FindElement(String text) {
+        driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\""+text+"\"));");
     }
 
     public static void Select_Scroll_Down(String id, String text, String attribute) {

@@ -78,4 +78,12 @@ public class TestCases extends BaseClass {
             logger.info("Time is- " +viewPage.getHourText() + ":" +viewPage.getMinuteText() +" PM");
         }
     }
+
+    @Test
+    public void test_case_5() {
+        homePage.clickViewMenu();
+
+        viewPage.clickDragAndDropMenu();
+        viewPage.dragAndDrop();
+    }
 }

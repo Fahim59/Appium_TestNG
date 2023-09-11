@@ -28,6 +28,10 @@ public class ViewPage extends BaseClass {
     @AndroidFindBy(id = "android:id/am_label") private MobileElement amLevel;
     @AndroidFindBy(id = "android:id/pm_label") private MobileElement pmLevel;
 
+    @AndroidFindBy(uiAutomator = "text(\"Drag and Drop\")") private MobileElement dragAndDropMenu;
+    @AndroidFindBy(xpath = "(.//*[@class='android.view.View'])[1]") private MobileElement fromElement;
+    @AndroidFindBy(xpath = "(.//*[@class='android.view.View'])[2]") private MobileElement toElement;
+
     public ViewPage clickAnimationMenu() {
         click_Element(animationMenu);
         return this;
@@ -96,5 +100,15 @@ public class ViewPage extends BaseClass {
 
     public String isPmActive() {
         return pmLevel.getAttribute("checked");
+    }
+
+    public ViewPage clickDragAndDropMenu() {
+        click_Element(dragAndDropMenu);
+        return this;
+    }
+
+    public ViewPage dragAndDrop() {
+        drag_drop_Element(fromElement, toElement);
+        return this;
     }
 }

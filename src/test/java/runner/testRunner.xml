@@ -11,7 +11,8 @@
                     <exclude name="test_case_1"/>
                     <exclude name="test_case_2"/>
                     <exclude name="test_case_3"/>
-                    <include name="test_case_4"/>
+                    <exclude name="test_case_4"/>
+                    <include name="test_case_5"/>
                 </methods>
             </class>
         </classes>
