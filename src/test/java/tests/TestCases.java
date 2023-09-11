@@ -85,5 +85,7 @@ public class TestCases extends BaseClass {
 
         viewPage.clickDragAndDropMenu();
         viewPage.dragAndDrop();
+
+        logger.info("Test case 5");
     }
 }
