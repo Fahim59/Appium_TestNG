@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All Test Suite" parallel="false">
+<suite name="All Test Suite" parallel="true">
 <listeners>
     <listener class-name="utils.Listeners"/>
 </listeners>
-    <test verbose="2" preserve-order="true" name="test">
+    <test verbose="2" preserve-order="true" name="Emulator">
+        <parameter name="platform" value="Android"/>
+        <parameter name="device" value="Nexus_5"/>
+        <parameter name="automation" value="UiAutomator2"/>
+        <parameter name="emulator" value="true"/>
+        <parameter name="isInstalled" value="true"/>
+        <parameter name="udid" value="emulator-5554"/>
+        <parameter name="appPackage" value="io.appium.android.apis"/>
+        <parameter name="appActivity" value="io.appium.android.apis.ApiDemos"/>
         <classes>
             <class name="tests.TestCases">
                 <methods>
@@ -14,10 +22,35 @@
                     <exclude name="test_case_4"/>
                     <exclude name="test_case_5"/>
                     <exclude name="test_case_6"/>
-                    <exclude name="test_case_7"/>
-                    <include name="test_case_8"/>
+                    <include name="test_case_7"/>
+                    <exclude name="test_case_8"/>
                 </methods>
             </class>
         </classes>
     </test>
+
+<!--    <test verbose="2" preserve-order="true" name="Real Device">-->
+<!--        <parameter name="platform" value="Android"/>-->
+<!--        <parameter name="device" value="Note 9 Pro Max"/>-->
+<!--        <parameter name="automation" value="UiAutomator2"/>-->
+<!--        <parameter name="emulator" value="false"/>-->
+<!--        <parameter name="isInstalled" value="true"/>-->
+<!--        <parameter name="udid" value="177cc4e3"/>-->
+<!--        <parameter name="appPackage" value="io.appium.android.apis"/>-->
+<!--        <parameter name="appActivity" value="io.appium.android.apis.ApiDemos"/>-->
+<!--        <classes>-->
+<!--            <class name="tests.TestCases">-->
+<!--                <methods>-->
+<!--                    <exclude name="test_case_1"/>-->
+<!--                    <exclude name="test_case_2"/>-->
+<!--                    <exclude name="test_case_3"/>-->
+<!--                    <exclude name="test_case_4"/>-->
+<!--                    <exclude name="test_case_5"/>-->
+<!--                    <exclude name="test_case_6"/>-->
+<!--                    <include name="test_case_7"/>-->
+<!--                    <exclude name="test_case_8"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+<!--        </classes>-->
+<!--    </test>-->
 </suite>

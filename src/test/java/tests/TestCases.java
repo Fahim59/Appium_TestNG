@@ -98,7 +98,7 @@ public class TestCases extends BaseClass {
 
     @Test(description = "Interact with apps")
     public void test_case_6() throws InterruptedException {
-        //homePage.clickViewMenu();
+//        homePage.clickViewMenu();
 
 //        small_wait(5000);
 //        driver.runAppInBackground(Duration.ofMillis(5000));
@@ -119,7 +119,7 @@ public class TestCases extends BaseClass {
     }
 
     @Test(description = "Web View")
-    public void test_case_7() {
+    public void test_case_7() throws InterruptedException {
         homePage.clickViewMenu();
 
         Scroll_Down_Text_FindElement("WebView");
@@ -129,6 +129,8 @@ public class TestCases extends BaseClass {
         for(String contexHandle : contexHandles){
             System.out.println(contexHandle);
         }
+
+        small_wait(1500);
 
         driver.context("WEBVIEW");
 
