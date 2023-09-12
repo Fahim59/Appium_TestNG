@@ -43,3 +43,9 @@
 2023-09-12 13:40:16.683 [main] INFO  base.BaseClass - Appium server started
 2023-09-12 13:40:25.505 [main] INFO  base.BaseClass - Appium server stopped
 2023-09-12 13:54:02.576 [main] INFO  base.BaseClass - Appium server started
+2023-09-12 13:54:34.685 [main] INFO  base.BaseClass - Appium server stopped
+2023-09-12 15:16:27.847 [main] INFO  base.BaseClass - Appium server started
+2023-09-12 15:16:28.425 [main] INFO  base.BaseClass - Appium server stopped
+2023-09-12 15:17:14.967 [main] INFO  base.BaseClass - Appium server started
+2023-09-12 15:17:15.495 [main] INFO  base.BaseClass - Appium server stopped
+2023-09-12 15:30:48.151 [main] INFO  base.BaseClass - Appium server started
