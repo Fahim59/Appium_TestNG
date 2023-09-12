@@ -1,6 +1,7 @@
 package tests;
 
 import base.BaseClass;
+import com.aventstack.extentreports.App;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
@@ -20,12 +21,14 @@ public class TestCases extends BaseClass {
     private HomePage homePage;
     private PreferencePage preferencePage;
     private ViewPage viewPage;
+    private AppsPage appsPage;
 
     @BeforeMethod
     public void beforeMethod() {
         homePage = new HomePage();
         preferencePage = new PreferencePage();
         viewPage = new ViewPage();
+        appsPage = new AppsPage();
     }
 
     @Test(description = "Basic click and send keys")
@@ -154,5 +157,37 @@ public class TestCases extends BaseClass {
         driver.findElementByXPath("//a[@aria-label='Add “Basic Blue Jeans” to your cart']").click();
         small_wait(1000);
         driver.findElementByXPath("//a[@title='View cart']").click();
+    }
+
+    @Test(description = "Calculator")
+    public void test_case_9() {
+        appsPage.clickDigit9();
+        appsPage.clickDigit6();
+        appsPage.clickDigit7();
+
+        appsPage.clickAddBtn();
+
+        appsPage.clickDigit5();
+        appsPage.clickDigit8();
+
+        appsPage.clickEqualBtn();
+
+        System.out.println(appsPage.getResult());
+    }
+
+    @Test(description = "Contact")
+    public void test_case_10() {
+        appsPage.clickDialerTab();
+        appsPage.setNumber();
+
+        appsPage.clickAddContactBtn();
+//        appsPage.clickCreateContactBtn();
+//        appsPage.clickCancelBtn();
+
+        appsPage.enterName();
+        appsPage.clickSaveBtn();
+
+        driver.pressKey(new KeyEvent().withKey(AndroidKey.HOME));
+        driver.pressKey(new KeyEvent().withKey(AndroidKey.CONTACTS));
     }
 }

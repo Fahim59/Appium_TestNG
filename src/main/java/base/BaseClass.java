@@ -1,6 +1,5 @@
 package base;
 
-import factory.DriverFactory;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
@@ -82,6 +81,8 @@ public class BaseClass {
         DesiredCapabilities caps = new DesiredCapabilities();
         File folder;
 
+        String application = new ConfigLoader().initializeProperty().getProperty("Android_Application");
+
         caps.setCapability(MobileCapabilityType.PLATFORM_NAME, platform);
         caps.setCapability(MobileCapabilityType.DEVICE_NAME, device);
 
@@ -105,7 +106,7 @@ public class BaseClass {
                         caps.setCapability("appActivity", appActivity);
 
                     case "false":
-                        folder = new File("src/test/resources", "ApiDemos-debug.apk");
+                        folder = new File("src/test/resources", application);
                         caps.setCapability(MobileCapabilityType.APP, folder.getAbsolutePath());
                         break;
 

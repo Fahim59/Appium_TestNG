@@ -11,8 +11,8 @@
         <parameter name="emulator" value="true"/>
         <parameter name="isInstalled" value="true"/>
         <parameter name="udid" value="emulator-5554"/>
-        <parameter name="appPackage" value="io.appium.android.apis"/>
-        <parameter name="appActivity" value="io.appium.android.apis.ApiDemos"/>
+        <parameter name="appPackage" value="com.google.android.dialer"/>
+        <parameter name="appActivity" value="com.google.android.dialer.extensions.GoogleDialtactsActivity"/>
         <classes>
             <class name="tests.TestCases">
                 <methods>
@@ -22,8 +22,10 @@
                     <exclude name="test_case_4"/>
                     <exclude name="test_case_5"/>
                     <exclude name="test_case_6"/>
-                    <include name="test_case_7"/>
+                    <exclude name="test_case_7"/>
                     <exclude name="test_case_8"/>
+                    <exclude name="test_case_9"/>
+                    <include name="test_case_10"/>
                 </methods>
             </class>
         </classes>
