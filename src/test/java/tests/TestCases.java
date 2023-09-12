@@ -12,6 +12,7 @@ import org.testng.annotations.*;
 import pages.*;
 
 import java.time.Duration;
+import java.util.Set;
 
 public class TestCases extends BaseClass {
     private static final Logger logger = LogManager.getLogger(TestCases.class);
@@ -115,5 +116,41 @@ public class TestCases extends BaseClass {
 
         driver.pressKey(new KeyEvent().withKey(AndroidKey.HOME));
         driver.pressKey(new KeyEvent().withKey(AndroidKey.CALCULATOR));
+    }
+
+    @Test(description = "Web View")
+    public void test_case_7() {
+        homePage.clickViewMenu();
+
+        Scroll_Down_Text_FindElement("WebView");
+        viewPage.clickWebViewMenu();
+
+        Set<String> contexHandles = driver.getContextHandles();
+        for(String contexHandle : contexHandles){
+            System.out.println(contexHandle);
+        }
+
+        driver.context("WEBVIEW");
+
+        System.out.println(driver.findElementByXPath("//a[contains(@href,'linked.html')]").getText());
+
+        driver.context("NATIVE_APP");
+    }
+
+    @Test(description = "Chrome Driver")
+    public void test_case_8() throws InterruptedException {
+        driver.get("https://askomdch.com/");
+
+        small_wait(2000);
+
+        driver.findElementByXPath("//button[@class='menu-toggle main-header-menu-toggle ast-mobile-menu-trigger-minimal']").click();
+
+        driver.findElementByLinkText("Men").click();
+
+        small_wait(1500);
+
+        driver.findElementByXPath("//a[@aria-label='Add “Basic Blue Jeans” to your cart']").click();
+        small_wait(1000);
+        driver.findElementByXPath("//a[@title='View cart']").click();
     }
 }

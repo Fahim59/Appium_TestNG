@@ -32,6 +32,8 @@ public class ViewPage extends BaseClass {
     @AndroidFindBy(xpath = "(.//*[@class='android.view.View'])[1]") private MobileElement fromElement;
     @AndroidFindBy(xpath = "(.//*[@class='android.view.View'])[2]") private MobileElement toElement;
 
+    @AndroidFindBy(uiAutomator = "text(\"WebView\")") private MobileElement webViewMenu;
+
     public ViewPage clickAnimationMenu() {
         click_Element(animationMenu);
         return this;
@@ -109,6 +111,11 @@ public class ViewPage extends BaseClass {
 
     public ViewPage dragAndDrop() {
         drag_drop_Element(fromElement, toElement);
+        return this;
+    }
+
+    public ViewPage clickWebViewMenu() {
+        click_Element(webViewMenu);
         return this;
     }
 }

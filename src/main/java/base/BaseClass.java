@@ -81,10 +81,43 @@ public class BaseClass {
 //        logger.info("initialize_driver");
 //    }
 
+//    @BeforeTest()
+//    public void initialize_driver() throws Exception {
+//        DesiredCapabilities caps = new DesiredCapabilities();
+//        File folder;
+//
+//        String emulator = "true";
+//
+//        caps.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
+//        caps.setCapability(MobileCapabilityType.DEVICE_NAME, "Nexus_5");
+//
+//        caps.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2");
+//
+//        if(emulator.equalsIgnoreCase("true")){
+//            caps.setCapability(MobileCapabilityType.UDID, "emulator-5554");
+//
+//            caps.setCapability("avd", "Emulator");
+//            caps.setCapability("avdLaunchTimeout", 180000);
+//        }
+//        else{
+//            caps.setCapability(MobileCapabilityType.UDID, "177cc4e3");
+//        }
+//
+////        folder = new File("src/test/resources", "ApiDemos-debug.apk");
+////        caps.setCapability(MobileCapabilityType.APP, folder.getAbsolutePath());
+//
+//        caps.setCapability("appPackage","io.appium.android.apis");
+//        caps.setCapability("appActivity","io.appium.android.apis.ApiDemos");
+//
+////        caps.setCapability("unlockType","pin");
+////        caps.setCapability("unlockKey","0000");
+//
+//        driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), caps);
+//    }
+
     @BeforeTest()
-    public void initialize_driver() throws Exception {
+    public void initialize_Chromedriver() throws Exception {
         DesiredCapabilities caps = new DesiredCapabilities();
-        File folder;
 
         String emulator = "true";
 
@@ -92,6 +125,9 @@ public class BaseClass {
         caps.setCapability(MobileCapabilityType.DEVICE_NAME, "Nexus_5");
 
         caps.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2");
+
+        caps.setCapability(MobileCapabilityType.BROWSER_NAME,"Chrome");
+        //caps.setCapability("chromedriverExecutable","");
 
         if(emulator.equalsIgnoreCase("true")){
             caps.setCapability(MobileCapabilityType.UDID, "emulator-5554");
@@ -102,15 +138,6 @@ public class BaseClass {
         else{
             caps.setCapability(MobileCapabilityType.UDID, "177cc4e3");
         }
-
-//        folder = new File("src/test/resources", "ApiDemos-debug.apk");
-//        caps.setCapability(MobileCapabilityType.APP, folder.getAbsolutePath());
-
-        caps.setCapability("appPackage","io.appium.android.apis");
-        caps.setCapability("appActivity","io.appium.android.apis.ApiDemos");
-
-//        caps.setCapability("unlockType","pin");
-//        caps.setCapability("unlockKey","0000");
 
         driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), caps);
     }
@@ -204,7 +231,7 @@ public class BaseClass {
     @AfterTest()
     public void quit_driver() {
         try {
-            driver.quit();
+            //driver.quit();
             //Runtime.getRuntime().exec("adb emu kill");
 
             File logFile = new File("Log Result/test.log");
