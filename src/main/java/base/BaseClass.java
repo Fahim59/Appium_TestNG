@@ -1,11 +1,14 @@
 package base;
 
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
+import io.appium.java_client.touch.TapOptions;
+import io.appium.java_client.touch.offset.ElementOption;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -197,8 +200,24 @@ public class BaseClass {
         return element.getAttribute("text");
     }
 
-    public static void Scroll_Down_Text_FindElement(String text) {
+    public void tap_Element(MobileElement element) {
+        TouchAction tap = new TouchAction<>(driver);
+        wait_for_visibility(element);
+        tap.tap(new TapOptions().withElement(ElementOption.element(element))).perform();
+    }
+
+    public void scroll_down_text_findElement(String text) {
         driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\""+text+"\"));");
+    }
+
+    public void select_scroll_down(MobileElement element, String text, String attribute) {
+        TouchAction tap = new TouchAction<>(driver);
+        wait_for_visibility(element);
+        tap.tap(new TapOptions().withElement(ElementOption.element(element))).perform();
+
+        driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\""+text+"\"));").click();
+
+        //driver.findElementByAndroidUIAutomator(""+attribute+"(\""+text+"\")").click();
     }
 
     @AfterTest()
