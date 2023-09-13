@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Product Text -->
+    <string name="product_name">Sauce Labs Onesie</string>
+    <string name="product_price">$7.99</string>
+</resources>
