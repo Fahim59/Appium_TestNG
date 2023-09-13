@@ -11,8 +11,8 @@
         <parameter name="emulator" value="true"/>
         <parameter name="isInstalled" value="true"/>
         <parameter name="udid" value="emulator-5554"/>
-        <parameter name="appPackage" value="io.appium.android.apis"/>
-        <parameter name="appActivity" value="io.appium.android.apis.ApiDemos"/>
+        <parameter name="appPackage" value="com.saucelabs.mydemoapp.rn"/>
+        <parameter name="appActivity" value="com.saucelabs.mydemoapp.rn.MainActivity"/>
         <classes>
             <class name="tests.HomeTest">
                 <methods>
