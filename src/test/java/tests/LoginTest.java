@@ -7,9 +7,7 @@ import org.json.JSONObject;
 import org.json.JSONTokener;
 import org.testng.annotations.*;
 import pages.*;
-import utils.ConfigLoader;
-
-import java.io.InputStream;
+import java.io.FileReader;
 
 public class LoginTest extends BaseClass {
     private static final Logger logger = LogManager.getLogger(LoginTest.class);
@@ -17,27 +15,25 @@ public class LoginTest extends BaseClass {
     private LoginPage loginPage;
     private HomePage homePage;
 
-    InputStream data;
+    FileReader data;
     JSONObject loginDetails;
     String errMessage;
 
     @BeforeClass
     public void beforeClass() throws Exception {
-        try{
-            errMessage = new ConfigLoader().parseStringXML().get("invalid_credential");
-
-            String file = "E:\\Intellij Files\\Appium_TestNG\\Extra\\login.json";
-            data = getClass().getClassLoader().getResourceAsStream(file);
+        try {
+            String file = "src/test/resources/login.json";
+            data = new FileReader(file);
 
             JSONTokener tokener = new JSONTokener(data);
             loginDetails = new JSONObject(tokener);
         }
-        catch (Exception e){
+        catch (Exception e) {
             e.printStackTrace();
             throw e;
         }
         finally {
-            if(data != null){
+            if (data != null) {
                 data.close();
             }
         }

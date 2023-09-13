@@ -30,26 +30,26 @@ public class ConfigLoader {
         return properties;
     }
 
-    public HashMap<String, String> parseStringXML() throws Exception{
-        HashMap<String, String> stringMap = new HashMap<>();
-        try {
-            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder builder = factory.newDocumentBuilder();
-            Document document = builder.parse("src/test/resources/Strings.xml");
-            document.getDocumentElement().normalize();
-            NodeList nList = document.getElementsByTagName("string");
-
-            for (int temp = 0; temp < nList.getLength(); temp++) {
-                Node node = nList.item(temp);
-                if (node.getNodeType() == Node.ELEMENT_NODE) {
-                    Element eElement = (Element) node;
-                    stringMap.put(eElement.getAttribute("name"), eElement.getTextContent());
-                }
-            }
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-        return stringMap;
-    }
+//    public HashMap<String, String> parseStringXML() throws Exception{
+//        HashMap<String, String> stringMap = new HashMap<>();
+//        try {
+//            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+//            DocumentBuilder builder = factory.newDocumentBuilder();
+//            Document document = builder.parse("src/test/resources/Strings.xml");
+//            document.getDocumentElement().normalize();
+//            NodeList nList = document.getElementsByTagName("string");
+//
+//            for (int temp = 0; temp < nList.getLength(); temp++) {
+//                Node node = nList.item(temp);
+//                if (node.getNodeType() == Node.ELEMENT_NODE) {
+//                    Element eElement = (Element) node;
+//                    stringMap.put(eElement.getAttribute("name"), eElement.getTextContent());
+//                }
+//            }
+//        }
+//        catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        return stringMap;
+//    }
 }

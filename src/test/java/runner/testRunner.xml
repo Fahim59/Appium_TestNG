@@ -14,9 +14,9 @@
         <parameter name="appPackage" value="com.saucelabs.mydemoapp.rn"/>
         <parameter name="appActivity" value="com.saucelabs.mydemoapp.rn.MainActivity"/>
         <classes>
-            <class name="tests.HomeTest">
+            <class name="tests.LoginTest">
                 <methods>
-                    <include name="home_test"/>
+                    <include name="login_with_valid_credentials"/>
                 </methods>
             </class>
         </classes>
