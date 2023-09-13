@@ -21,7 +21,7 @@ public class LoginTest extends BaseClass {
     @BeforeClass
     public void beforeClass() throws Exception {
         try {
-            String file = "src/test/resources/login.json";
+            String file = "src/test/resources/data.json";
             data = new FileReader(file);
 
             JSONTokener tokener = new JSONTokener(data);

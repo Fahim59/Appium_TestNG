@@ -23,6 +23,14 @@
             <class name="tests.ProductTest">
                 <methods>
                     <include name="validate_product"/>
+                    <include name="order_product"/>
+                </methods>
+            </class>
+
+            <class name="tests.CartTest">
+                <methods>
+                    <include name="check_product_details"/>
+                    <include name="enter_checkout_details"/>
                 </methods>
             </class>
         </classes>
