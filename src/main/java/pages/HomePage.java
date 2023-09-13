@@ -51,7 +51,7 @@ public class HomePage extends BaseClass {
         return this;
     }
 
-    public HomePage clickSLBTitle(){
+    public HomePage clickProductTitle(){
         click_Element(productTitle);
         return this;
     }

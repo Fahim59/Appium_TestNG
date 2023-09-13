@@ -19,6 +19,12 @@
                     <include name="login_with_valid_credentials"/>
                 </methods>
             </class>
+
+            <class name="tests.ProductTest">
+                <methods>
+                    <include name="validate_product"/>
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>
