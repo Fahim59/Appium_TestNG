@@ -87,5 +87,25 @@ public class CartTest extends BaseClass {
         cartPage.clickPaymentButton();
 
         logger.info("Entered Checkout Details");
+
+        small_wait(1500);
+        cartPage.setPaymentDetails(data.getString("name"),data.getString("card"),
+                data.getString("expiry"),data.getString("security"));
+
+        cartPage.clickReviewButton();
+
+        scroll_down_text_findElement("Estimated to arrive within 3 weeks.");
+
+        cartPage.clickPlaceOrderButton();
+
+        small_wait(1000);
+
+        if(cartPage.successMessage()) {
+            logger.info("Product Order Successful");
+        }
+        else {
+            logger.info("Product Order Failed");
+            Assert.fail();
+        }
     }
 }

@@ -22,6 +22,17 @@ public class CartPage extends BaseClass {
 
     @AndroidFindBy(xpath = "//*[@content-desc = 'To Payment button'][1]") private MobileElement paymentBtn;
 
+    @AndroidFindBy(xpath = "//*[@content-desc = 'Full Name* input field'][1]") private MobileElement cardNameField;
+    @AndroidFindBy(xpath = "//*[@content-desc = 'Card Number* input field'][1]") private MobileElement cardField;
+    @AndroidFindBy(xpath = "//*[@content-desc = 'Expiration Date* input field'][1]") private MobileElement expiryField;
+    @AndroidFindBy(xpath = "//*[@content-desc = 'Security Code* input field'][1]") private MobileElement scodeField;
+
+    @AndroidFindBy(xpath = "//*[@content-desc = 'Review Order button'][1]") private MobileElement reviewOrderBtn;
+
+    @AndroidFindBy(xpath = "//*[@content-desc = 'Place Order button'][1]") private MobileElement placeOrderBtn;
+
+    @AndroidFindBy(uiAutomator = "text(\"Checkout Complete\")") private MobileElement successMessage;
+
     public String getProductTitle(){
         return getText(productTitle);
     }
@@ -47,7 +58,6 @@ public class CartPage extends BaseClass {
         send_Keys(nameField, name);
         return this;
     }
-
     public CartPage enterAddress(String address){
         send_Keys(addressField, address);
         return this;
@@ -79,5 +89,41 @@ public class CartPage extends BaseClass {
     public CartPage clickPaymentButton(){
         click_Element(paymentBtn);
         return this;
+    }
+
+    public CartPage enterCardName(String name){
+        send_Keys(cardNameField, name);
+        return this;
+    }
+    public CartPage enterCardNumber(String cnum){
+        send_Keys(cardField, cnum);
+        return this;
+    }
+    public CartPage enterExpiryNumber(String exp){
+        send_Keys(expiryField, exp);
+        return this;
+    }
+    public CartPage enterSecurityCode(String scode){
+        send_Keys(scodeField, scode);
+        scroll_down_text_findElement("My billing address is the same as my shipping address.");
+        return this;
+    }
+
+    public CartPage setPaymentDetails(String name, String cnum, String exp,String scode){
+        return enterCardName(name).enterCardNumber(cnum).enterExpiryNumber(exp).enterSecurityCode(scode);
+    }
+
+    public CartPage clickReviewButton(){
+        click_Element(reviewOrderBtn);
+        return this;
+    }
+
+    public CartPage clickPlaceOrderButton(){
+        click_Element(placeOrderBtn);
+        return this;
+    }
+
+    public boolean successMessage(){
+        return successMessage.isDisplayed();
     }
 }

@@ -15,6 +15,9 @@
     "city": "Dhaka",
     "state": "Paltan",
     "zip": "1200",
-    "country": "Bangladesh"
+    "country": "Bangladesh",
+    "card": "325812657568789",
+    "expiry": "0325",
+    "security": "123"
   }
 }
