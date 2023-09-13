@@ -17,7 +17,6 @@ public class LoginTest extends BaseClass {
 
     FileReader data;
     JSONObject loginDetails;
-    String errMessage;
 
     @BeforeClass
     public void beforeClass() throws Exception {
