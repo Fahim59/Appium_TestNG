@@ -4,7 +4,15 @@
 <listeners>
     <listener class-name="utils.Listeners"/>
 </listeners>
-    <test verbose="2" preserve-order="true" name="test">
+    <test verbose="2" preserve-order="true" name="Emulator">
+        <parameter name="platform" value="Android"/>
+        <parameter name="device" value="Nexus_5"/>
+        <parameter name="automation" value="UiAutomator2"/>
+        <parameter name="emulator" value="true"/>
+        <parameter name="isInstalled" value="true"/>
+        <parameter name="udid" value="emulator-5554"/>
+        <parameter name="appPackage" value="io.appium.android.apis"/>
+        <parameter name="appActivity" value="io.appium.android.apis.ApiDemos"/>
         <classes>
             <class name="tests.HomeTest">
                 <methods>

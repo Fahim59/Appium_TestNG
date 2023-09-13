@@ -5,19 +5,23 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
+import utils.ConfigLoader;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.ServerSocket;
+import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -61,11 +65,95 @@ public class BaseClass {
         return isAppiumServerRunning;
     }
 
+    @Parameters({"platform","device","automation","emulator","isInstalled","udid","appPackage","appActivity"})
     @BeforeTest()
-    public void initialize_driver() throws Exception {
-        driver = DriverFactory.initializeDriver();
+    public void initialize_driver(String platform, String device, String automation, String emulator, String isInstalled,
+                                  String udid, String appPackage, String appActivity) throws Exception {
 
-        logger.info("initialize_driver");
+        DesiredCapabilities caps = new DesiredCapabilities();
+        File folder;
+
+        String application = new ConfigLoader().initializeProperty().getProperty("Android_Application");
+
+        caps.setCapability(MobileCapabilityType.PLATFORM_NAME, platform);
+        caps.setCapability(MobileCapabilityType.DEVICE_NAME, device);
+
+        switch (platform){
+            case "Android":
+                caps.setCapability(MobileCapabilityType.AUTOMATION_NAME, automation);
+
+                if(emulator.equalsIgnoreCase("true")){
+                    caps.setCapability(MobileCapabilityType.UDID, udid);
+
+                    caps.setCapability("avd", "Emulator");
+                    caps.setCapability("avdLaunchTimeout", 180000);
+                }
+                else{
+                    caps.setCapability(MobileCapabilityType.UDID, udid);
+                }
+
+                switch (isInstalled){
+                    case "true":
+                        caps.setCapability("appPackage", appPackage);
+                        caps.setCapability("appActivity", appActivity);
+
+                    case "false":
+                        folder = new File("src/test/resources", application);
+                        caps.setCapability(MobileCapabilityType.APP, folder.getAbsolutePath());
+                        break;
+
+                    default:
+                        throw new Exception("Invalid Information " +isInstalled);
+                }
+                break;
+
+            case "iOS":
+                System.out.println("iOS setting is missing");
+                break;
+
+            default:
+                throw new Exception("Invalid Platform Name " +platform);
+        }
+
+        driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), caps);
+    }
+
+    @Parameters({"platform","device","automation","emulator","isInstalled","udid","appPackage","appActivity"})
+    @BeforeTest(enabled = false)
+    public void initialize_Chromedriver(String platform, String device, String automation, String emulator, String isInstalled,
+                                        String udid, String appPackage, String appActivity) throws Exception {
+
+        DesiredCapabilities caps = new DesiredCapabilities();
+
+        caps.setCapability(MobileCapabilityType.PLATFORM_NAME, platform);
+        caps.setCapability(MobileCapabilityType.DEVICE_NAME, device);
+
+        caps.setCapability(MobileCapabilityType.BROWSER_NAME,"Chrome");
+        //caps.setCapability("chromedriverExecutable","");
+
+        switch (platform){
+            case "Android":
+                caps.setCapability(MobileCapabilityType.AUTOMATION_NAME, automation);
+
+                if(emulator.equalsIgnoreCase("true")){
+                    caps.setCapability(MobileCapabilityType.UDID, udid);
+
+                    caps.setCapability("avd", "Emulator");
+                    caps.setCapability("avdLaunchTimeout", 180000);
+                }
+                else{
+                    caps.setCapability(MobileCapabilityType.UDID, udid);
+                }
+
+            case "iOS":
+                System.out.println("iOS setting is missing");
+                break;
+
+            default:
+                throw new Exception("Invalid Platform Name " +platform);
+        }
+
+        driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), caps);
     }
 
     public AndroidDriver getDriver(){
