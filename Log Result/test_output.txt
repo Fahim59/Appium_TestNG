@@ -16,3 +16,24 @@
 2023-09-14 10:42:35.259 [main] INFO  tests.CartTest - Proceed Button Clicked
 2023-09-14 10:42:56.475 [main] INFO  tests.CartTest - Entered Checkout Details
 2023-09-14 10:43:22.114 [main] INFO  tests.CartTest - Product Order Successful
+2023-09-14 10:43:25.028 [main] INFO  base.BaseClass - Appium server stopped
+2023-09-14 12:05:43.567 [main] INFO  base.BaseClass - Appium server started
+2023-09-14 12:08:06.574 [main] INFO  tests.LoginTest - login_with_valid_credentials
+2023-09-14 12:08:19.192 [main] INFO  tests.ProductTest - Product Title Matched
+2023-09-14 12:08:21.367 [main] INFO  tests.ProductTest - Product Price Matched
+2023-09-14 12:08:37.294 [main] INFO  tests.ProductTest - Cart Button Clicked
+2023-09-14 12:08:43.430 [main] INFO  tests.CartTest - Proceed Button Clicked
+2023-09-14 12:09:15.845 [main] INFO  tests.CartTest - Entered Checkout Details
+2023-09-14 12:10:01.778 [main] INFO  tests.CartTest - Product Order Successful
+2023-09-14 12:10:11.297 [main] INFO  base.BaseClass - Appium server stopped
+2023-09-14 12:18:12.736 [main] INFO  base.BaseClass - Appium server started
+2023-09-14 12:18:42.512 [main] INFO  tests.LoginTest - login_with_valid_credentials
+2023-09-14 12:18:50.880 [main] INFO  tests.ProductTest - Product Title Matched
+2023-09-14 12:18:52.136 [main] INFO  tests.ProductTest - Product Price Matched
+2023-09-14 12:19:09.784 [main] INFO  tests.ProductTest - Cart Button Clicked
+2023-09-14 12:19:14.596 [main] INFO  tests.CartTest - Proceed Button Clicked
+2023-09-14 12:19:43.703 [main] INFO  tests.CartTest - Entered Checkout Details
+2023-09-14 12:20:29.689 [main] INFO  tests.CartTest - Product Order Successful
+2023-09-14 12:20:35.062 [main] INFO  base.BaseClass - Appium server stopped
+2023-09-14 12:22:35.327 [main] INFO  base.BaseClass - Appium server started
+2023-09-14 12:23:04.620 [main] INFO  tests.LoginTest - login_with_valid_credentials
