@@ -11,7 +11,6 @@ import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.appium.java_client.touch.TapOptions;
 import io.appium.java_client.touch.offset.ElementOption;
-import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -24,19 +23,26 @@ import org.testng.ITestResult;
 import org.testng.annotations.*;
 import utils.ConfigLoader;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.*;
 
 public class BaseClass {
     protected static AndroidDriver<AndroidElement> driver;
     private static AppiumDriverLocalService server;
+
+    public static String decode_passw,email,port,mail;
 
     private static final Logger logger = LogManager.getLogger(BaseClass.class);
 
@@ -228,10 +234,93 @@ public class BaseClass {
         //driver.findElementByAndroidUIAutomator(""+attribute+"(\""+text+"\")").click();
     }
 
+    public static void send_email() {
+        try{
+            String TestFile = "E:\\Intellij Files\\Appium_TestNG\\Extra\\Email.txt";
+            FileReader FR = new FileReader(TestFile);
+            BufferedReader BR = new BufferedReader(FR);
+            String content = "";
+
+            for (int i = 0; (content = BR.readLine()) != null; i++) {
+                String[] arrOfStr = content.split("\\| ", 4);
+
+                decode_passw = arrOfStr[0];
+                email = arrOfStr[1];
+                port = arrOfStr[2];
+                mail = arrOfStr[3];
+            }
+        }
+        catch (Exception e){
+            System.err.println("Error: " + Arrays.toString(e.getStackTrace()));
+        }
+
+        String decode_pass = decode_passw;
+        String password = new String(Base64.getDecoder().decode(decode_pass.getBytes()));
+
+        final String from = email; //For Yahoo, it should be a yahoo mail
+
+        final String p1 = "mrahaman59@yahoo.com";
+        //final String p2 = "sbappy88@gmail.com";
+        //final String p3 = "parul@erainfotechbd.com";
+        //final String p4 = "tauhid@erainfotechbd.com";
+
+        String host = "smtp.gmail.com";                   //smtp.mail.yahoo.com
+        Properties properties = System.getProperties();
+
+        properties.put("mail.smtp.host", host);
+        properties.put("mail.smtp.port", port);
+        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.auth", "true");
+
+        Session session = Session.getInstance(properties, new Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(mail, password);
+            }
+        });
+
+        session.setDebug(true);
+        try {
+            MimeMessage message = new MimeMessage(session);
+            Multipart multipartObject = new MimeMultipart();
+
+            message.setFrom(new InternetAddress(from));
+
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(p1));
+            //message.addRecipient(Message.RecipientType.TO, new InternetAddress(p2));
+            //message.addRecipient(Message.RecipientType.TO, new InternetAddress(p3));
+            //message.addRecipient(Message.RecipientType.BCC, new InternetAddress(p4));
+
+            message.setSubject("Test Execution Result Report"); //Mail Subject
+
+            BodyPart emailBody = new MimeBodyPart();
+            emailBody.setText("Dear Sir/Ma'am, " + "\n" + "Here is test result execution report." + "\n" + "\n" + "Test Executed By-" + "\n" + "Mustafizur Rahman");
+
+            BodyPart attachment = new MimeBodyPart();
+            String filename = "E:\\Intellij Files\\Appium_TestNG\\Reports\\Html Reports\\Extent.html";
+            DataSource source = new FileDataSource(filename);
+            attachment.setDataHandler(new DataHandler(source));
+            attachment.setFileName(filename);
+
+            multipartObject.addBodyPart(emailBody); //Mail Body
+            multipartObject.addBodyPart(attachment); // Attachment
+
+            message.setContent(multipartObject);
+
+            System.out.println("Sending............");
+            Transport.send(message);
+            System.out.println("Email Sent Successfully....");
+        }
+        catch (MessagingException mex) {
+            mex.printStackTrace();
+            System.out.println("Email Sent Failed....");
+        }
+    }
+
     @AfterTest()
     public void quit_driver() {
         try {
             driver.quit();
+            send_email();
             //Runtime.getRuntime().exec("adb emu kill");
 
             File logFile = new File("Log Result/test.log");

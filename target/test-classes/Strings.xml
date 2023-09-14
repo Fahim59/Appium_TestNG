@@ -2,7 +2,7 @@
 <resources>
     <!-- Product Text -->
     <string name="product_name">Sauce Labs Onesie</string>
-    <string name="product_price">$7.9</string>
+    <string name="product_price">$7.99</string>
 
     <!-- Success Message -->
     <string name="success_message">Checkout Complete</string>

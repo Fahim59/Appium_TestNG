@@ -113,3 +113,23 @@
 2023-09-14 14:56:41.416 [main] INFO  tests.ProductTest - Product Title Matched
 2023-09-14 14:56:41.849 [main] INFO  tests.ProductTest - Product Title Matched
 2023-09-14 14:56:42.658 [main] INFO  tests.ProductTest - Product Title Matched
+2023-09-14 14:56:44.847 [main] INFO  base.BaseClass - Appium server stopped
+2023-09-14 17:21:35.144 [main] INFO  base.BaseClass - Appium server started
+2023-09-14 17:22:05.278 [main] INFO  tests.LoginTest - login_with_valid_credentials
+2023-09-14 17:22:12.128 [main] INFO  tests.ProductTest - Product Title Matched
+2023-09-14 17:22:13.329 [main] INFO  tests.ProductTest - Product Price Matched
+2023-09-14 17:22:18.804 [main] INFO  base.BaseClass - Appium server stopped
+2023-09-14 17:23:15.923 [main] INFO  base.BaseClass - Appium server started
+2023-09-14 17:23:36.521 [main] INFO  tests.LoginTest - login_with_valid_credentials
+2023-09-14 17:23:43.841 [main] INFO  tests.ProductTest - Product Title Matched
+2023-09-14 17:23:44.168 [main] INFO  tests.ProductTest - Product Price Matched
+2023-09-14 17:23:48.996 [main] INFO  base.BaseClass - Appium server stopped
+2023-09-14 17:25:22.817 [main] INFO  base.BaseClass - Appium server started
+2023-09-14 17:25:41.702 [main] INFO  tests.LoginTest - login_with_valid_credentials
+2023-09-14 17:25:49.712 [main] INFO  tests.ProductTest - Product Title Matched
+2023-09-14 17:25:49.985 [main] INFO  tests.ProductTest - Product Price Matched
+2023-09-14 17:25:52.742 [main] INFO  base.BaseClass - Appium server stopped
+2023-09-14 17:29:36.467 [main] INFO  base.BaseClass - Appium server started
+2023-09-14 17:30:04.453 [main] INFO  tests.LoginTest - login_with_valid_credentials
+2023-09-14 17:30:10.469 [main] INFO  tests.ProductTest - Product Title Matched
+2023-09-14 17:30:11.729 [main] INFO  tests.ProductTest - Product Price Matched
