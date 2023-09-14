@@ -126,4 +126,9 @@ public class CartPage extends BaseClass {
     public boolean successMessage(){
         return successMessage.isDisplayed();
     }
+
+    public String text(){
+        wait_for_visibility(successMessage);
+        return successMessage.getText();
+    }
 }

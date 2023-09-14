@@ -5,5 +5,5 @@
     <string name="product_price">$7.99</string>
 
     <!-- Success Message -->
-    <string name="success_message">Checkout Complete</string>
+    <string name="success_message">Checkout Complete Done</string>
 </resources>

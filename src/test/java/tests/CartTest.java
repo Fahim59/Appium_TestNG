@@ -21,8 +21,7 @@ public class CartTest extends BaseClass {
     FileReader data;
     JSONObject checkoutDetails;
 
-    String productName;
-    String productPrice;
+    String productName, productPrice, message;
 
     Faker faker = new Faker();
     String fullName, address, city, state, zipCode, country;
@@ -32,6 +31,7 @@ public class CartTest extends BaseClass {
         try {
             productName = new ConfigLoader().parseStringXML().get("product_name");
             productPrice = new ConfigLoader().parseStringXML().get("product_price");
+            message = new ConfigLoader().parseStringXML().get("success_message");
 
             fullName = faker.name().fullName();
             address = faker.address().fullAddress();
@@ -109,12 +109,14 @@ public class CartTest extends BaseClass {
 
         small_wait(1000);
 
-        if(cartPage.successMessage()) {
-            logger.info("Product Order Successful");
-        }
-        else {
-            logger.error("Product Order Failed");
-            Assert.fail();
-        }
+//        if(cartPage.successMessage()) {
+//            logger.info("Product Order Successful");
+//        }
+//        else {
+//            logger.error("Product Order Failed");
+//            Assert.fail();
+//        }
+
+        Assert.assertEquals(message, cartPage.text());
     }
 }
