@@ -3,6 +3,7 @@
 <suite name="All Test Suite" parallel="false">
 <listeners>
     <listener class-name="utils.Listeners"/>
+    <listener class-name="retry_analyzer.Transformer"/>
 </listeners>
     <test verbose="2" preserve-order="true" name="Emulator">
         <parameter name="platform" value="Android"/>
