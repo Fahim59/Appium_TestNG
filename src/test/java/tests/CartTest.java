@@ -1,11 +1,11 @@
 package tests;
 
 import base.BaseClass;
+import com.github.javafaker.Faker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.JSONObject;
 import org.json.JSONTokener;
-import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import pages.*;
@@ -24,11 +24,21 @@ public class CartTest extends BaseClass {
     String productName;
     String productPrice;
 
+    Faker faker = new Faker();
+    String fullName, address, city, state, zipCode, country;
+
     @BeforeClass
     public void beforeClass() throws Exception {
         try {
             productName = new ConfigLoader().parseStringXML().get("product_name");
             productPrice = new ConfigLoader().parseStringXML().get("product_price");
+
+            fullName = faker.name().fullName();
+            address = faker.address().fullAddress();
+            city = faker.address().city();
+            state = faker.address().state();
+            zipCode = faker.address().zipCode();
+            country = faker.address().country();
 
             String file = "src/test/resources/data.json";
             data = new FileReader(file);
@@ -81,15 +91,14 @@ public class CartTest extends BaseClass {
 
         JSONObject data = checkoutDetails.getJSONObject("checkoutDetails");
 
-        cartPage.setCheckoutDetails(data.getString("name"),data.getString("address"),data.getString("city"),
-                data.getString("state"),data.getString("zip"),data.getString("country"));
+        cartPage.setCheckoutDetails(fullName, address, city, state, zipCode, country);
 
         cartPage.clickPaymentButton();
 
         logger.info("Entered Checkout Details");
 
         small_wait(1500);
-        cartPage.setPaymentDetails(data.getString("name"),data.getString("card"),
+        cartPage.setPaymentDetails(fullName, data.getString("card"),
                 data.getString("expiry"),data.getString("security"));
 
         cartPage.clickReviewButton();
@@ -104,7 +113,7 @@ public class CartTest extends BaseClass {
             logger.info("Product Order Successful");
         }
         else {
-            logger.info("Product Order Failed");
+            logger.error("Product Order Failed");
             Assert.fail();
         }
     }
