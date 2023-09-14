@@ -23,7 +23,7 @@
 
             <class name="tests.ProductTest">
                 <methods>
-                    <exclude name="validate_product"/>
+                    <include name="validate_product"/>
                     <exclude name="order_product"/>
                 </methods>
             </class>
