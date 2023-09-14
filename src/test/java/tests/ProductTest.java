@@ -9,7 +9,7 @@ import pages.*;
 import utils.ConfigLoader;
 
 public class ProductTest extends BaseClass {
-    private static final Logger logger = LogManager.getLogger(LoginTest.class);
+    private static final Logger logger = LogManager.getLogger(ProductTest.class);
 
     private ProductPage productPage;
     private HomePage homePage;
@@ -29,9 +29,9 @@ public class ProductTest extends BaseClass {
         productPage = new ProductPage();
     }
 
-    @Test
+    @Test(description = "This is for validate product details scenario")
     public void validate_product() {
-        scroll_down_text_findElement("Sauce Labs Onesie");
+        scroll_down_text_findElement(productName);
 
         homePage.clickProductTitle();
 
@@ -44,7 +44,7 @@ public class ProductTest extends BaseClass {
         logger.info("Product Price Matched");
     }
 
-    @Test
+    @Test(description = "This is for order product scenario")
     public void order_product() {
         scroll_down_text_findElement("Product Highlights");
 

@@ -224,7 +224,7 @@ public class BaseClass {
     @AfterTest()
     public void quit_driver() {
         try {
-            //driver.quit();
+            driver.quit();
             //Runtime.getRuntime().exec("adb emu kill");
 
             File logFile = new File("Log Result/test.log");
@@ -234,7 +234,7 @@ public class BaseClass {
             FileUtils.writeStringToFile(outputFile, logContents, "UTF-8");
         }
         catch (Exception e) {
-            System.out.println("Log save failed" +e);
+            logger.error("Log save failed -" +e);
         }
     }
 

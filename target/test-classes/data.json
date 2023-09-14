@@ -4,18 +4,7 @@
     "password": "10203040"
   },
 
-  "invalidUsername": {
-    "username": "user",
-    "password": "10203040"
-  },
-
   "checkoutDetails": {
-    "name": "Mustafizur Rahman",
-    "address": "Paltan",
-    "city": "Dhaka",
-    "state": "Paltan",
-    "zip": "1200",
-    "country": "Bangladesh",
     "card": "325812657568789",
     "expiry": "0325",
     "security": "123"

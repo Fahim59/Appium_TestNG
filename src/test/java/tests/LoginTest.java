@@ -44,7 +44,7 @@ public class LoginTest extends BaseClass {
         loginPage = new LoginPage();
     }
 
-    @Test
+    @Test(description = "This is for login scenario")
     public void login_with_valid_credentials() throws InterruptedException {
         homePage.clickMenuButton();
         homePage.clickLoginMenuButton();

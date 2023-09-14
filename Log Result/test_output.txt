@@ -7,3 +7,12 @@
 2023-09-14 10:17:40.598 [main] INFO  tests.LoginTest - Proceed Button Clicked
 2023-09-14 10:18:05.045 [main] INFO  tests.LoginTest - Entered Checkout Details
 2023-09-14 10:18:33.461 [main] INFO  tests.LoginTest - Product Order Successful
+2023-09-14 10:18:35.754 [main] INFO  base.BaseClass - Appium server stopped
+2023-09-14 10:41:39.585 [main] INFO  base.BaseClass - Appium server started
+2023-09-14 10:42:14.239 [main] INFO  tests.LoginTest - login_with_valid_credentials
+2023-09-14 10:42:22.760 [main] INFO  tests.ProductTest - Product Title Matched
+2023-09-14 10:42:23.106 [main] INFO  tests.ProductTest - Product Price Matched
+2023-09-14 10:42:31.608 [main] INFO  tests.ProductTest - Cart Button Clicked
+2023-09-14 10:42:35.259 [main] INFO  tests.CartTest - Proceed Button Clicked
+2023-09-14 10:42:56.475 [main] INFO  tests.CartTest - Entered Checkout Details
+2023-09-14 10:43:22.114 [main] INFO  tests.CartTest - Product Order Successful

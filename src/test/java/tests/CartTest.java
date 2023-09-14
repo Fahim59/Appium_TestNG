@@ -14,7 +14,7 @@ import utils.ConfigLoader;
 import java.io.FileReader;
 
 public class CartTest extends BaseClass {
-    private static final Logger logger = LogManager.getLogger(LoginTest.class);
+    private static final Logger logger = LogManager.getLogger(CartTest.class);
 
     private CartPage cartPage;
 
@@ -62,7 +62,7 @@ public class CartTest extends BaseClass {
         cartPage = new CartPage();
     }
 
-    @Test
+    @Test(description = "This is for check product details scenario")
     public void check_product_details() throws InterruptedException {
         small_wait(1500);
 
@@ -85,7 +85,7 @@ public class CartTest extends BaseClass {
         logger.info("Proceed Button Clicked");
     }
 
-    @Test
+    @Test(description = "This is for entering checkout details scenario")
     public void enter_checkout_details() throws InterruptedException {
         small_wait(2000);
 
