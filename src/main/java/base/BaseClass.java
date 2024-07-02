@@ -260,9 +260,6 @@ public class BaseClass {
         final String from = email; //For Yahoo, it should be a yahoo mail
 
         final String p1 = "mrahaman59@yahoo.com";
-        //final String p2 = "sbappy88@gmail.com";
-        //final String p3 = "parul@erainfotechbd.com";
-        //final String p4 = "tauhid@erainfotechbd.com";
 
         String host = "smtp.gmail.com";                   //smtp.mail.yahoo.com
         Properties properties = System.getProperties();
@@ -286,9 +283,6 @@ public class BaseClass {
             message.setFrom(new InternetAddress(from));
 
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(p1));
-            //message.addRecipient(Message.RecipientType.TO, new InternetAddress(p2));
-            //message.addRecipient(Message.RecipientType.TO, new InternetAddress(p3));
-            //message.addRecipient(Message.RecipientType.BCC, new InternetAddress(p4));
 
             message.setSubject("Test Execution Result Report"); //Mail Subject
 
@@ -296,7 +290,7 @@ public class BaseClass {
             emailBody.setText("Dear Sir/Ma'am, " + "\n" + "Here is test result execution report." + "\n" + "\n" + "Test Executed By-" + "\n" + "Mustafizur Rahman");
 
             BodyPart attachment = new MimeBodyPart();
-            String filename = "E:\\Intellij Files\\Appium_TestNG\\Reports\\Html Reports\\Extent.html";
+            String filename = "D:\\Intellij Files\\Appium_TestNG\\Reports\\Html Reports\\Extent.html";
             DataSource source = new FileDataSource(filename);
             attachment.setDataHandler(new DataHandler(source));
             attachment.setFileName(filename);
